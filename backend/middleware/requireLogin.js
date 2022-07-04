@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 const JWT_SECRET = process.env.JWT_SECRET;
 const User = require("../models/user");
 
-const private = (req, res, next) => {
+const requireLogin = (req, res, next) => {
     const {authorization} = req.headers;
     if (!authorization) {
         res.status(401).json("Log in!")
@@ -20,4 +20,4 @@ const private = (req, res, next) => {
     })
 }
 
-module.exports = private;
+module.exports = requireLogin;

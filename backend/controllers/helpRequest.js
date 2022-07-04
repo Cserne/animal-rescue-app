@@ -37,7 +37,7 @@ const helpRequest = async(req, res) => {
 
     })
 
-    res.send("Ok")
+    res.status(200);
 
 }
 

@@ -18,13 +18,13 @@ const login = async (req, res) => {
         .then(doMatch => {
             if (doMatch) {
                const token = jwt.sign({_id: savedUser._id}, JWT_SECRET)
-               res.json({token})
+               res.status(200).json({token})
             }
             else{
                 return res.status(422).json({error:"Invalid Email or password"})
             }
         })
-        .catch(err=>{
+        .catch(err => {
             console.log(err)
         })
     })
