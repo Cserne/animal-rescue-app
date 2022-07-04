@@ -9,15 +9,16 @@ const HelpReq = ({helpreq}) => {
     const sendHelp = async (description) => {
         // setShow(true);
         const token = (JSON.parse(localStorage.getItem('token')).token);
-        console.log("tokenke: ", token);
     
         if (!token) window.alert("Please log in first");
         if ((token && description)) {
           try {
             const response = await http.post(
-              "http://localhost:4000/api/helprequest/:_helprequestid/help", 
+              `http://localhost:4000/api/helprequest/${helpreq._id}/help`, 
               {
-                description: description,
+                description: description
+                // ,
+                // userId: _id
               }, {
                 headers: {
                   'Authorization': `Bearer ${token}`
@@ -27,7 +28,7 @@ const HelpReq = ({helpreq}) => {
             console.log("ez a response: ", response)
             return response;
           } catch (error) {
-            console.log("something has gone wrong! ", error);
+            console.log("Something has gone wrong! ", error);
             return error;
           }
         }
@@ -80,6 +81,7 @@ const HelpReq = ({helpreq}) => {
         <div key={helpreq._id}>{helpreq.helps.map((help) => (
             <>
                 <div key={help._id}>{help.description}</div>
+                <div key={help._id}>{help.userId}</div>
             </>
         ))}</div>
 
