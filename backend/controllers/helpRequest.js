@@ -135,6 +135,38 @@ const updateHelp = async (req, res) => { // UPDATE MY OWN HELP DESCRIPTION!!!!
 
 }
 
+const deleteHelpRequest = async (req, res) => { // UPDATE MY OWN HELP DESCRIPTION!!!!
+    const {authorization} = req.headers;
+    if (!authorization) {
+        res.status(401).json("Log in!")
+    }
+    const token = authorization.replace("Bearer ","")
+    jwt.verify(token, JWT_SECRET, (err, payload) => {
+        // console.log(req.user._id);
+        if (err) {
+            res.status(401).json("Log in first!")
+        }
+        const {_id} = payload;
+
+    User.findOneAndUpdate(
+        {"_id": _id},
+        {
+            $pull: {
+                "helpRequests": {"_id": req.params._helprequestid}
+            }
+        }
+        // ,
+        // { "multi" : true } 
+        ).then( user => {
+            console.log("é")
+        }).catch( err => {
+            console.log(err)
+        })
+        res.send('b');
+    })
+
+}
+
 const readUser = async (req, res) => {
     User.find({}, (error, result) => {
         if(error) {
@@ -146,5 +178,5 @@ const readUser = async (req, res) => {
 }
 
 
-module.exports = { helpRequest, getHelpRequests, getRequestsByCity, giveHelp, updateHelp, readUser };
+module.exports = { helpRequest, getHelpRequests, getRequestsByCity, giveHelp, updateHelp, readUser, deleteHelpRequest };
  

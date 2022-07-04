@@ -26,5 +26,43 @@ describe('/api/helprequest get tests', () => {
         await stopDb(server, connection);
     });
 
+    // test('test user gets empty list', async () => {
+    //     // given
+    //     const newUser = new User({
+    //         username: 'Cirmi',
+    //     });
+    //     await newUser.save();
+
+    //     const token = jwt.sign({ userId: newUser._id }, process.env.JWT_SECRET);
+    //     client.set('authorization', token);
+    
+    //     // when
+    //     const response = await client.get('/api/dashboards');
+        
+    //     //then
+    //     expect(response.status).toBe(200);
+    //     const responseData = response.body;
+    //     expect(responseData.user.dashboards).toStrictEqual([]);
+    // });
+
+    // test('deleted user receives null', async () => {
+    //     // given
+    //     const newUser = new User({
+    //         username: 'Cirmi',
+    //     });
+    //     await newUser.save();
+
+    //     const token = jwt.sign({userId: newUser._id}, process.env.JWT_SECRET);
+    //     client.set('authorization', token);
+    //     await User.deleteMany();
+    
+    //     // when
+    //     const response = await client.get('/api/dashboards');
+        
+    //     //then
+    //     expect(response.status).toBe(200);
+    //     const responseData = response.body;
+    //     expect(responseData.user).toBeNull();
+    // });
 
 }) 
