@@ -2,7 +2,6 @@ const User = require("../models/user");
 const jwt = require('jsonwebtoken');
 const JWT_SECRET = process.env.JWT_SECRET;
 const mongoose = require('mongoose');
-// const myId = mongoose.Types.ObjectId();
 
 const helpRequest = async(req, res) => {
     const species = req.body.species;
@@ -61,7 +60,7 @@ const getRequestsByCity = async(req, res) => {
             us.helpRequests.map((u) => {
                 if (u.city.toLowerCase() === req.query.city) {
 
-                    helpRequests.push(u); // GET all data of helprequest with specific city data.
+                    helpRequests.push(u);
                 }
             })
         })
@@ -142,7 +141,6 @@ const deleteHelpRequest = async (req, res) => { // UPDATE MY OWN HELP DESCRIPTIO
     }
     const token = authorization.replace("Bearer ","")
     jwt.verify(token, JWT_SECRET, (err, payload) => {
-        // console.log(req.user._id);
         if (err) {
             res.status(401).json("Log in first!")
         }
@@ -155,16 +153,13 @@ const deleteHelpRequest = async (req, res) => { // UPDATE MY OWN HELP DESCRIPTIO
                 "helpRequests": {"_id": req.params._helprequestid}
             }
         }
-        // ,
-        // { "multi" : true } 
         ).then( user => {
-            console.log("é")
+            console.log('ok')
         }).catch( err => {
             console.log(err)
         })
-        res.send('b');
+        res.send('deleted');
     })
-
 }
 
 const readUser = async (req, res) => {

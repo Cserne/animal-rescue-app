@@ -3,6 +3,8 @@ import jwt_decode from 'jwt-decode';
 import http from 'axios';
 import { addHelpRequest } from '../api/helpRequest';
 import { Link } from "react-router-dom";
+import UpdateHelp from '../components/UpdateHelp';
+import DeleteHelpRequest from '../components/DeleteHelpRequest';
 
 
 const Mypage = () => {
@@ -34,7 +36,6 @@ const Mypage = () => {
         }
       }
       );
-      // if()
       console.log(response.data);
       response.data.map((d) => {
         console.log(d._id)
@@ -85,6 +86,13 @@ const Mypage = () => {
                 <div key={help._id}>Helyszín: {help.city}</div>
                 <div key={help._id}>Dátum: {help.date}</div>
                 <div key={help._id}>Leírás: {help.description}</div>
+                <div key={help._id}>Segítségek: {help.helps.map((h) => (
+                  <div>
+                    <UpdateHelp h={h} help={help}/>
+                  </div>
+                ))}
+                </div>
+                <DeleteHelpRequest help={help}/>
               </div>
             ))}
           </div>
