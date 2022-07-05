@@ -10,7 +10,7 @@ const Navbar = () => {
 
   const isLoggedIn = async () => {
     const token = localStorage.getItem("token");
-    console.log(token)
+    console.log("toktoktok", token)
     const decoded = jwt_decode(token);
     if (token) {
         console.log(decoded);

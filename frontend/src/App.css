@@ -1,3 +1,43 @@
+* {
+  margin:0;
+  padding:0;
+  border:0;
+  background:transparent;
+  outline:none;
+  text-decoration:none;
+  outline:none;
+  font-family:inherit;
+  box-sizing:border-box;
+}
+
+ol, ul, li {
+  list-style:none;
+  display:block;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing:0;
+}
+
+a, img {
+  border: none;
+}
+
+button, a {
+  cursor: pointer;
+  color: inherit;
+}
+
+textarea {
+  resize: none;
+}
+
+button, input, textarea {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+}
+
 .App {
   text-align: center;
 }
@@ -8,6 +48,103 @@
 
 .usersHelpRequests{
   margin-bottom: 20px;
+}
+
+body {
+  background-image: url('./images/dog-cat.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+a {
+  text-decoration: none;
+  padding: 4px 26px;
+  border: 1px solid red;
+  border-radius: 15px;
+  background-color: #fff;
+  color: black;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 62px;
+  border-bottom: 2px solid #909090;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.navbar-btn:hover {
+  font-weight: bold;
+}
+
+.homepage, .showAllData, .myHelps {
+  margin-top: 162px;
+}
+
+.regPage, .loginPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.regForm label, .loginForm label {
+  margin-bottom: 0;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.loginForm, .regForm {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-40%);
+  height: 350px;
+  width: 350px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  border: 2px solid #d6a3a3;
+  border-radius: 10px;
+  background-color: rgba(248, 248, 248, 0.3);
+}
+
+.loginInputDiv, .regInputDiv {
+  height: 100%;
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.regForm input, .loginForm input {
+  height: 40px;
+  width: 100%;
+  padding: 10px;
+  background-color: #dbdfe6;
+  border: 2px solid #909090;
+  border-radius: 10px;
+  opacity: 1;
+}
+
+.regForm input[type="submit"], .loginForm input[type="submit"] {
+  height: 70px;
+  padding: 0;
+  background-color: #e16330;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bolder;
+  letter-spacing: 0.1em;
+  text-align: center;
+}
+
+.usersHelpRequests {
+  border: 1px solid red;
 }
 
 @media (prefers-reduced-motion: no-preference) {

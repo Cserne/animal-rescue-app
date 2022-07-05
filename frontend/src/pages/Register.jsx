@@ -62,8 +62,6 @@ const Register = () => {
                   value={username}
                   onChange={(e) => {
                     setUsername(e.target.value);
-                    // e.target.value.length >= 5 &&
-                    //   checkValid("username", e.target.value);
                   }}
                   required
                 />

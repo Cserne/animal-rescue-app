@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import http from 'axios';
-// import Help from '../components/Help';
-import { Link } from "react-router-dom";
 import AllUsers from '../components/AllUsers';
+import Navbar from '../components/Navbar';
 
 
 const ShowAllUsers = () => {
@@ -29,16 +28,11 @@ const ShowAllUsers = () => {
     
   return (
     <div>
+      <Navbar/>
       {
         data && 
           <>
             <AllUsers data={data}/>
-            <Link to="/" className="navbar-btn">
-              <div>
-                <p>HOMEPAGE</p>
-              </div>
-            </Link>
-
           </>
       }
     </div>

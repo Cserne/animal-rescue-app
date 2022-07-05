@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import HelpReq from '../components/HelpReq';
 
 const AllUsers = ({data}) => {
-    // const [showHelpButton, setShowHelpButton] = useState(true);
 
   return (
     <div>

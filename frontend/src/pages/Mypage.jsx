@@ -5,6 +5,7 @@ import { addHelpRequest } from '../api/helpRequest';
 import { Link } from "react-router-dom";
 import UpdateHelp from '../components/UpdateHelp';
 import DeleteHelpRequest from '../components/DeleteHelpRequest';
+import Navbar from '../components/Navbar';
 
 
 const Mypage = () => {
@@ -76,6 +77,7 @@ const Mypage = () => {
 
   return (
     <div>
+      <Navbar className='navbar'/>
       {
         data && 
           <div>
@@ -150,12 +152,6 @@ const Mypage = () => {
     
             <input type="submit" value="Submit" />
           </form>
-          <Link to="/" className="navbar-btn">
-              <div>
-                <p>HOMEPAGE</p>
-              </div>
-          </Link>
-
         </div>
     
         )

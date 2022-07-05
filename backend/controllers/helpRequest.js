@@ -104,7 +104,7 @@ const giveHelp = async (req, res) => {
 
 }
 
-const updateHelp = async (req, res) => { // UPDATE MY OWN HELP DESCRIPTION!!!!
+const updateHelp = async (req, res) => {
     const {authorization} = req.headers;
     if (!authorization) {
         res.status(401).json("Log in!")
