@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
 import http from 'axios';
+import jwt_decode from 'jwt-decode';
 
-const HelpReq = ({helpreq}) => {
+const HelpReq = ({helpreq, d}) => {
     const [description, setDescription] = useState("");
+    const [sameUser, setSameUSer] = useState(false);
 
     const sendHelp = async (description) => {
         const token = (JSON.parse(localStorage.getItem('token')).token);
+        const decoded = jwt_decode(token);
     
         if (!token) window.alert("Please log in first");
-        if ((token && description)) {
+        if ((token && description) && decoded._id !== d._id) {
           try {
             const response = await http.post(
               `http://localhost:4000/api/helprequest/${helpreq._id}/help`, 
@@ -40,22 +43,23 @@ const HelpReq = ({helpreq}) => {
       };
 
   return (
-    <div>
-        <div key={helpreq._id}>{helpreq.species}</div>
-        <div key={helpreq._id}>{helpreq.city}</div>
-        <div key={helpreq._id}>{helpreq.date}</div>
-        <div key={helpreq._id}>{helpreq.description}</div>
+    <div className='helpReq'>
+        <div key={helpreq._id}>Posztoló: {d.username} ({d.email})</div>
+        <div key={helpreq._id}>Állatfaj: {helpreq.species}</div>
+        <div key={helpreq._id}>Helyszín: {helpreq.city}</div>
+        <div key={helpreq._id}>Dátum: {helpreq.date}</div>
+        <div key={helpreq._id}>Részletek: {helpreq.description}</div>
         {
             <>
-            <form className="reg-form" onSubmit={handleSubmit}>
+            <form className="sendHelp" onSubmit={handleSubmit}>
             <label>
               Please fill!
             </label>
             <div className="input-div">
               <input
                 type="textarea"
-                name="description"
-                placeholder="description"
+                name="help"
+                placeholder="send help"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
                 required

@@ -67,9 +67,10 @@ const Register = () => {
                 />
                 {
                 // usernameTaken && 
-                (
-                  <p className="takenError">username already taken</p>
-                )}
+                // (
+                //   <p className="takenError">username already taken</p>
+                // )
+                }
               </div>
               <div className="inputDiv">
                 <input
@@ -88,7 +89,8 @@ const Register = () => {
                 />
                 {
                 // emailTaken &&
-                 <p className="taken-error">email already taken</p>}
+                //  <p className="taken-error">email already taken</p>
+                }
               </div>
               <div className="inputDiv">
                 <input

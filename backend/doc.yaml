@@ -1,0 +1,302 @@
+swagger: "2.0"
+info:
+  description: "This is an Animal Rescue server."
+  version: "1.0.0"
+  title: "Animal Rescue App"
+  termsOfService: "http://swagger.io/terms/"
+  contact:
+    email: "apiteam@swagger.io"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "petstore.swagger.io"
+basePath: "/v2"
+tags:
+- name: "rescue"
+  description: "Animal Rescue App"
+  externalDocs:
+    description: "Find out more"
+    url: "http://swagger.io"
+- name: "store"
+  description: "Access to Animal Rescue App"
+- name: "user"
+  description: "Operations about user"
+  externalDocs:
+    description: "Find out more about our store"
+    url: "http://swagger.io"
+schemes:
+- "https"
+- "http"
+paths:
+  /api/user:
+    get:
+      tags:
+      - "user"
+      summary: "See all users"
+      description: ""
+      operationId: "getUser"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Registered user's data"
+        required: true
+        schema:
+          $ref: "#/definitions/User"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: "object"
+  /api/user/:_userid:
+    delete:
+      tags:
+      - "pet"
+      summary: "Deletes user by _id"
+      description: "Logged in user can delete their own account."
+      operationId: "deleteUserById"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "query"
+        description: "User found by id"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        "200":
+          description: "successful operation"
+        "400":
+          description: "Invalid status value"
+  /api/helprequest:
+    get:
+      tags:
+      - "helprequests"
+      summary: "Get all helprequests"
+      description: "Returns all helprequests posted by logged in users."
+      operationId: "getRequests"
+      produces:
+      - "application/xml"
+      - "application/json"
+      responses:
+        "200":
+          description: "successful operation"
+    post:
+      tags:
+      - "helprequests"
+      summary: "User can post a help request."
+      description: "User needs to be logged in and fill all required data (species, city, date, description)."
+      operationId: "postHelpRequest"
+      consumes:
+      - "application/x-www-form-urlencoded"
+      produces:
+      - "application/xml"
+      - "application/json"
+      responses:
+        "200":
+          description: "successful operation"
+        "422":
+          description: "All field are required"
+        "401":
+          description: "User is not logged in"
+  /api/helprequest/{_helprequestid}:
+    delete:
+      tags:
+      - "deleteHelpRequest"
+      summary: "Deletes user's helprequest."
+      description: "Deletes user's helprequest found by helprequest id."
+      operationId: "deleteHelpRequest"
+      consumes:
+      - "multipart/form-data"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "_helprequestid"
+        in: "path"
+        description: "ID of helprequest to be deleted"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        "200":
+          description: "successful operation"
+  /query/api/helprequest:
+    get:
+      tags:
+      - "city"
+      summary: "Search by city"
+      description: "Returns helprequests with searched city data"
+      operationId: "getInventory"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: "object"
+            additionalProperties:
+              type: "integer"
+              format: "int32"
+  /api/helprequest/{_helprequestid}/help:
+    post:
+      tags:
+      - "help"
+      summary: "Send a help message."
+      description: "A logged in user can send a short message to the other user who posted the helprequest."
+      operationId: "help"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "_helprequestid"
+        in: "path"
+        description: "helprequest id that user wants to post a help to"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        "200":
+          description: "successful operation"
+        "401":
+          description: "User is not logged in"
+  /api/helprequest/{_id}/help/{_helpid}:
+    patch:
+      tags:
+      - "help"
+      summary: "Find help by id."
+      description: "To update a help data of a helprequest, the id of the helprequest and the help is needed."
+      operationId: "findHelpById"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "_id"
+        in: "path"
+        description: "ID of helprequest"
+        required: true
+        type: "integer"
+        format: "int64"
+      - name: "_helpid"
+        in: "path"
+        description: "ID of help inside helprequest."
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/User"
+        "401":
+          description: "User is not logged in"
+  /api/signup:
+    post:
+      tags:
+      - "user"
+      summary: "Create user"
+      description: "New user."
+      operationId: "createUser"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Created user object"
+        required: true
+        schema:
+          $ref: "#/definitions/User"
+      responses:
+        default:
+          description: "successful operation"
+  /api/login:
+    post:
+      tags:
+      - "user"
+      summary: "User login path."
+      description: "User can log in after sign up."
+      operationId: "loginUser"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "List of user object"
+        required: true
+        schema:
+          type: "array"
+          items:
+            $ref: "#/definitions/User"
+      responses:
+        default:
+          description: "successful operation"
+definitions:
+  User:
+    type: "object"
+    properties:
+      _id:
+        type: "integer"
+        format: "int64"
+      username:
+        type: "string"
+      email:
+        type: "string"
+        format: "email"
+      password:
+        type: "string"
+        format: "password"
+      helpRequests:
+        type: "array"
+        items:
+          type: "object"
+    xml:
+      name: "User"
+  helpRequests:
+    type: "array"
+    items:
+      type: "object"
+    properties:
+      _id:
+        type: "integer"
+        format: "int64"
+      species:
+        type: "string"
+      city:
+        type: "string"
+      date:
+        type: "integer"
+        format: "int32"
+      description:
+        type: "string"
+      helps:
+        type: "array"
+        items:
+         type: "object"
+    xml:
+      name: "helpRequests"
+  helps:
+    type: "array"
+    items:
+     type: "object"
+    properties:
+      _id:
+        type: "integer"
+        format: "int32"
+      userId:
+        type: "integer"
+        format: "int32"
+      description:
+        type: "string"
+    xml:
+      name: "helps"
+externalDocs:
+  description: "Find out more about Swagger"
+  url: "http://swagger.io"

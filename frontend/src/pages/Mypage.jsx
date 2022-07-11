@@ -2,15 +2,16 @@ import React, { useState, useEffect } from 'react';
 import jwt_decode from 'jwt-decode';
 import http from 'axios';
 import { addHelpRequest } from '../api/helpRequest';
-import { Link } from "react-router-dom";
 import UpdateHelp from '../components/UpdateHelp';
 import DeleteHelpRequest from '../components/DeleteHelpRequest';
+import DeleteUser from '../components/DeleteUser';
 import Navbar from '../components/Navbar';
 
 
 const Mypage = () => {
   const [loggedin, setLoggedin] = useState(false);
   // const [showHelps, setShowHelps] = useState(false);
+  const [users, setUsers] = useState(null);
   const [data, setData] = useState(null);
   const [species, setSpecies] = useState("");
   const [city, setCity] = useState("");
@@ -37,14 +38,17 @@ const Mypage = () => {
         }
       }
       );
-      console.log(response.data);
+      console.log('ez most a lényeg', response.data);
+      setUsers(response.data)
+      // users.map((u) => (
+      //   console.log('')
+      // ))
       response.data.map((d) => {
         console.log(d._id)
         try {
           if(d._id === jwt_decode(localStorage.getItem("token"))._id) {
             console.log('Zsír');
             setData(d)
-            console.log("data", data);
           }
         } catch (error) {
           console.log(error)
@@ -78,6 +82,11 @@ const Mypage = () => {
   return (
     <div>
       <Navbar className='navbar'/>
+      {/* {
+        users && users.map((u) => (
+          <DeleteUser u={u}/>
+        ))
+      } */}
       {
         data && 
           <div>
@@ -97,17 +106,19 @@ const Mypage = () => {
                 <DeleteHelpRequest help={help}/>
               </div>
             ))}
+            <div className='deleteUser'>
+              <DeleteUser data={data}/>
+            </div>
           </div>
       }
       {
         loggedin && (
-          <div className="login-page">
-          <h3>Register a new helprequest!</h3>
-          <form className="reg-form" onSubmit={handleSubmit}>
+          <div className="myPage">
+          <form className="helpForm" onSubmit={handleSubmit}>
             <label>
-              Please fill!
+              <h3>Register a new helprequest!</h3>
             </label>
-            <div className="input-div">
+            <div className="myPageInputDiv">
               <input
                 type="string"
                 name="species"
@@ -118,7 +129,7 @@ const Mypage = () => {
                 required
               />
             </div>
-            <div className="input-div">
+            <div className="myPageInputDiv">
               <input
                 type="textarea"
                 name="city"
@@ -128,7 +139,7 @@ const Mypage = () => {
                 required
               />
             </div>
-            <div className="input-div">
+            <div className="myPageInputDiv">
               <input
                 type="text"
                 name="date"
@@ -138,7 +149,7 @@ const Mypage = () => {
                 required
               />
             </div>
-            <div className="input-div">
+            <div className="myPageInputDiv">
               <input
                 type="textarea"
                 name="description"

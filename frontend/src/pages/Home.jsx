@@ -7,7 +7,7 @@ const Home = () => {
 
   const isLoggedIn = async () => {
     const token = localStorage.getItem("token");
-    console.log(token)
+    // const token = (JSON.parse(localStorage.getItem('token')).token);
     const decoded = jwt_decode(token);
     console.log("CHECK", decoded);
     if (token) setLoggedin(true);

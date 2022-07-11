@@ -1,7 +1,7 @@
 require("dotenv").config();
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const AuthEntity = require("../models/user");
+const User = require("../models/user");
 const JWT_SECRET = process.env.JWT_SECRET;
 
 const login = async (req, res) => {
@@ -9,7 +9,7 @@ const login = async (req, res) => {
     if( !email || !password ) {
        return res.status(422).json({error:"please add email or password"})
     }
-    AuthEntity.findOne({email: email})
+    User.findOne({email: email})
     .then( savedUser => {
         if (!savedUser) {
            return res.status(422).json({error:"Invalid Email or password"})

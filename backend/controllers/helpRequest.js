@@ -10,7 +10,7 @@ const helpRequest = async(req, res) => {
     const description = req.body.description;
     
     if ( !species || ! city || !date || !description ) {
-        return res.status(422).json("Please fill in all fields!")
+        return res.status(422).json("All field are required")
     };
     const {authorization} = req.headers;
     if (!authorization) {
@@ -33,9 +33,7 @@ const helpRequest = async(req, res) => {
         }).catch((err) => {
             console.log(err);
         })
-
     })
-
     res.status(200);
 
 }
@@ -58,15 +56,26 @@ const getRequestsByCity = async(req, res) => {
         let helpRequests = [];
         user.map((us) => {
             us.helpRequests.map((u) => {
-                if (u.city.toLowerCase() === req.query.city) {
+                if (u.city.toLowerCase() === req.query.city.toLowerCase()) {
 
-                    helpRequests.push(u);
+                    helpRequests.push({'username': us.username, 'email': us.email, 'helpRequests': u});
                 }
             })
         })
         res.send(helpRequests);
-
 })
+//     User.find().then( user => {
+//         let helpRequests = [];
+//         user.map((us) => {
+//             us.helpRequests.map((u) => {
+//                 if (u.city.toLowerCase() === req.query.city.toLowerCase()) {
+
+//                     helpRequests.push(u);
+//                 }
+//             })
+//         })
+//         res.send(helpRequests);
+// })
 }
 
 const giveHelp = async (req, res) => {
@@ -117,24 +126,48 @@ const updateHelp = async (req, res) => {
         }
         const {_id} = payload;
 
-    User.findOneAndUpdate(
-        {"_id": _id, "helpRequests._id": req.params._id},
-        {
-            $set: {
-                "helpRequests.$.helps": {"_id": req.params._helpid, "description": req.body.description}
+    User.findOne({"_id": _id}).exec(function(err,result) {
+        if (err) throw err;
+        if (result) {
+            console.log('result', result)
+            let helps;
+            for (let i = 0; i < result.helpRequests.length; i++) {
+                helps = (result.helpRequests[i].helps);
+                for(let i = 0; i < helps.length; i++) {
+                    let res;
+                    res = helps[i]._id.toString().replace(/new ObjectId\("(.*)"\)/, "$1")
+                    if(res === req.params._helpid) 
+                    {
+                        helps[i].description = helps[i].description + " " + result.username + ": " + req.body.description;
+                        console.log('helps', helps[i].description);
+                    }
+                }
             }
-        },
-        ).then( user => {
-            console.log("é")
-        }).catch( err => {
-            console.log(err)
-        })
-        res.send('b');
+            result.save()
+            console.log("new value", helps)
+        } else {
+            console.log("not found")
+        }
+    });
+
+    // User.findOneAndUpdate(
+    //     {"_id": _id, "helpRequests._id": req.params._id},
+    //     {
+    //         $set: {
+    //             "helpRequests.$.helps": {"_id": req.params._helpid, "description": req.body.description}
+    //         }
+    //     },
+    //     ).then( user => {
+    //         console.log("é")
+    //     }).catch( err => {
+    //         console.log(err)
+    //     })
+        res.send('Ok');
     })
 
 }
 
-const deleteHelpRequest = async (req, res) => { // UPDATE MY OWN HELP DESCRIPTION!!!!
+const deleteHelpRequest = async (req, res) => {
     const {authorization} = req.headers;
     if (!authorization) {
         res.status(401).json("Log in!")
@@ -172,6 +205,29 @@ const readUser = async (req, res) => {
     })
 }
 
+const deleteUser = async (req, res) => {
+    const {authorization} = req.headers;
+    if (!authorization) {
+        res.status(401).json("Log in!")
+    }
+    const token = authorization.replace("Bearer ","")
+    jwt.verify(token, JWT_SECRET, (err, payload) => {
+        if (err) {
+            res.status(401).json("Log in first!")
+        }
+        const {_id} = payload;
 
-module.exports = { helpRequest, getHelpRequests, getRequestsByCity, giveHelp, updateHelp, readUser, deleteHelpRequest };
+        User.findOneAndDelete({ _id: _id }, (error, result) => {
+            if(error) {
+                res.send(error)
+            } else {
+                res.send(result)
+            }
+        })
+    })
+    
+}
+
+
+module.exports = { helpRequest, getHelpRequests, getRequestsByCity, giveHelp, updateHelp, readUser, deleteUser, deleteHelpRequest };
  

@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [loggedin, setLoggedin] = useState(false);
-  const [email, setEmail] = useState("");
+  // const [email, setEmail] = useState("");
   const navigate = useNavigate();
 
   const isLoggedIn = async () => {
@@ -14,14 +14,18 @@ const Navbar = () => {
     const decoded = jwt_decode(token);
     if (token) {
         console.log(decoded);
-      setEmail(decoded.email);
+      // setEmail(decoded.email);
       setLoggedin(true);
     }
   };
+  const openMap = () => {
+    window.open('https://maps.google.com/maps?ll=47.497913,19.040236&z=8&t=m&hl=hu-HU&gl=US&mapclient=apiv3');
+  }
 
   useEffect(() => {
     isLoggedIn();
   }, []);
+
 
   return (
     <div className="navbar">
@@ -30,27 +34,31 @@ const Navbar = () => {
           <p>HOMEPAGE</p>
         </div>
       </Link>
+      <button onClick={openMap}>Állatorvos Kereső</button>
 
       {loggedin && (
-        <Link to="/mypage" className="navbar-btn">
-          <div className="navbar-btn">
-            <p>My PAGE</p>
-          </div>
-        </Link>
-      )}
-      {loggedin && (
-        <Link to="/helps" className="navbar-btn">
-          <div className="navbar-btn">
-            <p>HELPS</p>
-          </div>
-        </Link>
-      )}
-      {loggedin && (
-        <Link to="/showallusers" className="navbar-btn">
-          <div className="navbar-btn">
-            <p>ALL USERS</p>
-          </div>
-        </Link>
+        <>
+          <Link to="/mypage" className="navbar-btn">
+            <div className="navbar-btn">
+              <p>My PAGE</p>
+            </div>
+          </Link>
+          <Link to="/helps" className="navbar-btn">
+            <div className="navbar-btn">
+              <p>HELPS</p>
+            </div>
+          </Link>
+          <Link to="/showallusers" className="navbar-btn">
+            <div className="navbar-btn">
+              <p>ALL USERS</p>
+            </div>
+          </Link>
+          <Link to="/searchbycity" className="navbar-btn">
+            <div className="navbar-btn">
+              <p>Search by city</p>
+            </div>
+          </Link>
+        </>
       )}
       {!loggedin ? (
         <>
@@ -80,10 +88,13 @@ const Navbar = () => {
               <p>LOGOUT</p>
             </div>
           </Link>
-          <h6>Hi {email}, you're logged in!</h6>
+          {/* <h6>Hi {email}, you're logged in!</h6> */}
         </>
-      )}
+      )
+      }
+    
     </div>
+
   );
 };
 

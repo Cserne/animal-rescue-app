@@ -2,14 +2,15 @@ import React, { useState, useEffect } from 'react';
 import http from 'axios';
 import AllUsers from '../components/AllUsers';
 import Navbar from '../components/Navbar';
+import SearchByCity from './SearchByCity';
 
 
 const ShowAllUsers = () => {
     const [data, setData] = useState(null);
 
+
     const loadData = async () => {
       const token = (JSON.parse(localStorage.getItem('token')).token);
-      console.log("tokenke: ", token);
 
         const response = await http.get("http://localhost:4000/api/user"
         , {
@@ -18,17 +19,22 @@ const ShowAllUsers = () => {
           }
         }
         );
-        console.log("userdata", response.data);
         setData(response.data);
     } 
 
     useEffect(() => {
         loadData();
     }, [])
+
+
+
     
   return (
     <div>
       <Navbar/>
+      {
+        <SearchByCity/>
+      }
       {
         data && 
           <>
