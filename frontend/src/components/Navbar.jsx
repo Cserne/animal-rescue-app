@@ -10,12 +10,14 @@ const Navbar = () => {
 
   const isLoggedIn = async () => {
     const token = localStorage.getItem("token");
-    console.log("toktoktok", token)
-    const decoded = jwt_decode(token);
     if (token) {
+      const decoded = jwt_decode(token);
+      console.log("toktoktok", token)
         console.log(decoded);
       // setEmail(decoded.email);
       setLoggedin(true);
+    } else {
+      console.log('noToken')
     }
   };
   const openMap = () => {

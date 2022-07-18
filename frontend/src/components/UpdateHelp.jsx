@@ -13,7 +13,7 @@ const UpdateHelp = ({h, help}) => {
         if ((token && description)) {
           try {
             const response = await http.patch(
-              `http://localhost:4000/api/helprequest/${help._id}/help/${h._id}`, 
+              `https://app.mankacs.site/api/helprequest/${help._id}/help/${h._id}`, 
               {
                 description: description
               }, {

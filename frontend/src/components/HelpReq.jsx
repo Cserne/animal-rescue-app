@@ -14,7 +14,7 @@ const HelpReq = ({helpreq, d}) => {
         if ((token && description) && decoded._id !== d._id) {
           try {
             const response = await http.post(
-              `http://localhost:4000/api/helprequest/${helpreq._id}/help`, 
+              `https://app.mankacs.site/api/helprequest/${helpreq._id}/help`, 
               {
                 description: description
               }, {

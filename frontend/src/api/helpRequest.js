@@ -8,7 +8,7 @@ export const addHelpRequest = async (species, city, date, description) => {
     if ((token && species && city && date && description)) {
       try {
         const response = await http.post(
-          "http://localhost:4000/api/helprequest", 
+          "https://app.mankacs.site/api/helprequest", 
           {
             species: species,
             city: city,

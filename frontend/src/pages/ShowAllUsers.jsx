@@ -12,7 +12,7 @@ const ShowAllUsers = () => {
     const loadData = async () => {
       const token = (JSON.parse(localStorage.getItem('token')).token);
 
-        const response = await http.get("http://localhost:4000/api/user"
+        const response = await http.get("https://app.mankacs.site/api/user"
         , {
           headers: {
             'Authorization': `Bearer ${token}`

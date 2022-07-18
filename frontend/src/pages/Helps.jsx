@@ -11,7 +11,7 @@ const Helps = () => {
       const token = (JSON.parse(localStorage.getItem('token')).token);
       console.log("tokenke: ", token);
 
-        const response = await http.get("http://localhost:4000/api/helprequest"
+        const response = await http.get("https://app.mankacs.site/api/helprequest"
         , {
           headers: {
             'Authorization': `Bearer ${token}`
