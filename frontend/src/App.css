@@ -6,7 +6,7 @@
   outline:none;
   text-decoration:none;
   outline:none;
-  font-family:inherit;
+  /* font-family:inherit; */
   box-sizing:border-box;
 }
 
@@ -42,12 +42,24 @@ button, input, textarea {
   text-align: center;
 }
 
-.help, .myHelps, .showAllData {
+.showAllData {
   margin-bottom: 60px;
+}
+
+.showAllData {
+  margin-top: 40px;
 }
 
 .usersHelpRequests{
   margin-bottom: 20px;
+}
+
+.myPageHelpDesc {
+  
+}
+
+.helpsPage {
+  margin: 30px auto;
 }
 
 body {
@@ -55,6 +67,7 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
+  font-family: 'Roboto', sans-serif;
 }
 
 .map-container {
@@ -64,33 +77,127 @@ body {
 }
 
 a, button {
+  font-size: 20px;
+  font-family: 'Merienda', cursive;
   text-decoration: none;
   padding: 4px 26px;
-  border: 1px solid red;
+  /* border: 1px solid red; */
   border-radius: 15px;
-  background-color: #fff;
+  /* background-color: #fff; */
   color: black;
 }
 
 .navbar {
+  font-family: 'Merienda', cursive;
+  font-size: 20px;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 62px;
-  border-bottom: 2px solid #909090;
+  /* background-color: #583930; */
+  background: linear-gradient(180deg, rgba(239,218,192,1) 0%, rgb(130, 83, 60) 100%);
+  opacity: 0.9;
+  box-shadow: 1px 1px 8px 2px #000000;
+  /* border-bottom: 2px solid #909090; */
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+  z-index: 99;
 }
+
+/* .hidden {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 62px;
+  border: 1px solid red;
+  z-index: 4000;
+} */
 
 .navbar-btn:hover {
   font-weight: bold;
 }
 
-.homepage, .showAllData, .myHelps {
+.searchByCity {
+  width: 300px;
+  margin: 110px auto 0;
+  height: 120px;
+  /* border: 1px solid red; */
+  background-color: rgba(248, 248, 248, 0.8);
+  box-shadow: 1px 1px 8px 2px #000000;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.myPageDeleteHelpReq {
+  text-align: center;
+}
+
+.myPageDeleteHelpReq button {
+  margin-top: 5px;
+  border: 1px solid #000;
+  border-top-left-radius: 37px 140px;
+  border-top-right-radius: 23px 133px;
+  border-bottom-left-radius: 110px 19px;
+  border-bottom-right-radius: 120px 24px;
+}
+
+.myPageDeleteHelpReq button:hover {
+  background-color: #282c34;
+  color: #fff;
+  border-color: #282c34;
+}
+
+.searchByCity input:nth-child(3) {
+  margin: 0 auto;
+  width: 100px;
+  padding: 4px 8px;
+  /* border: 1px solid red; */
+  border-radius: 10px;
+}
+
+.searchByCity input {
+  font-family: 'Roboto', sans-serif;
+}
+
+.searchByCity input[type="submit"]:hover {
+  background-color: #909090;
+  color: #fff;
+}
+
+.homepage {
   margin-top: 162px;
 }
+
+.allUsersPage {
+  margin-top: 0;
+}
+
+.mainMyPage {
+  /* position: absolute; */
+  /* display: flex;
+  justify-content: space-evenly; */
+  top: 162px;
+  left: 0;
+  width: 100%;
+  /* z-index: -1000; */
+  /* background-color: inherit; */
+}
+
+.showMyHelpRequests {
+  margin-top: 20px;
+  margin-right: 0;
+  width: 100%;
+}
+
+/* .mainPageContent {
+  position: absolute;
+
+} */
 
 .regPage, .loginPage, .myPage {
   display: flex;
@@ -99,7 +206,9 @@ a, button {
 }
 
 .myPage {
-  margin-top: 180px;
+  /* position: fixed; */
+  left: 30px;
+  margin: 160px 0 50px;
 }
 
 .regForm label, .loginForm label{
@@ -128,9 +237,16 @@ a, button {
   background-color: rgba(248, 248, 248, 0.3);
 }
 
-.helpForm, .helpReq {
-  height: 350px;
-  width: 350px;
+.showAllHelpReq {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.searchDetails {
+  /* margin-left: 50px; */
+  margin: 60px auto 0;
+  height: fit-content;
+  width: 550px;
   padding: 30px;
   display: flex;
   flex-direction: column;
@@ -138,6 +254,148 @@ a, button {
   border: 2px solid #d6a3a3;
   border-radius: 10px;
   background-color: rgba(248, 248, 248, 0.3);
+  box-shadow: 1px 1px 8px 2px #000000;
+  text-align: left;
+}
+
+.help {
+  /* margin-left: 50px; */
+  height: fit-content;
+  width: 550px;
+  margin: 0 auto 20px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  border: 2px solid #d6a3a3;
+  border-radius: 10px;
+  background-color: rgba(248, 248, 248, 0.3);
+  box-shadow: 1px 1px 8px 2px #000000;
+}
+
+.help div {
+  margin: 5px auto;
+}
+
+.helpsOnPage {
+  margin-top: 100px;
+}
+
+.sendHelp input[type="submit"]:hover {
+  background-color: #dbdfe6;
+  color: #282c34;
+}
+
+.helpReq, .myHelps {
+  /* margin-left: 50px; */
+  margin: 30px auto;
+  height: fit-content;
+  width: 80vw;
+  padding: 30px;
+  /* display: flex;
+  flex-direction: column;
+  justify-content: space-evenly; */
+  border: 2px solid #d6a3a3;
+  border-radius: 10px;
+  background-color: rgba(248, 248, 248, 0.7);
+  box-shadow: 1px 1px 8px 2px #000000;
+}
+
+.myHelps {
+  text-align: left;
+}
+
+/* .myHelps {
+  display: flex;
+  justify-content: space-evenly;
+} */
+
+.helpForm {
+  /* margin-left: 50px; */
+  width: 500px;
+  height: fit-content;
+  /* height: 500px; */
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  border: 2px solid #d6a3a3;
+  border-radius: 10px;
+  background-color: rgba(248, 248, 248, 0.3);
+  box-shadow: 1px 1px 8px 2px #000000;
+}
+
+.wantToDelete {
+  margin: 0 auto;
+  height: 100px;
+  width: 250px;
+  background-color: rgba(248, 248, 248, 0.8);
+  border: 1px solid #d6a3a3;
+  border-radius: 10px;
+  box-shadow: 1px 1px 8px 2px #000000;
+}
+
+.wantToDelete button:hover {
+  background-color: #909090;
+  color: rgba(248, 248, 248, 0.8);
+  border-radius: 10px;
+  box-shadow: 1px 1px 8px 2px #000000;
+}
+
+.deleteProfileButton {
+  background-color: rgba(248, 248, 248, 0.8);
+  border: 1px solid #d6a3a3;
+  border-radius: 10px;
+  box-shadow: 1px 1px 8px 2px #000000;
+}
+
+.deleteProfileButton:hover {
+  background-color: #909090;
+  color: rgba(248, 248, 248, 0.8);
+  border: 1px solid #909090;
+  border-radius: 10px;
+  box-shadow: 1px 1px 8px 2px #000000;
+}
+
+.wantToDelete p {
+  margin: 15px 0;
+}
+
+.wantToDelete button {
+  margin: 0 10px;
+}
+
+.myPageContainer h2 {
+  margin: 0 auto;
+  width: 210px;
+  border-radius: 10px;
+  font-family: 'Merienda', cursive;
+  background-color: #dbdfe6;
+}
+
+.helpsOnPage h2 {
+  font-family: 'Merienda', cursive;
+}
+
+.deleteUser {
+  margin-top: 250px;
+}
+
+.helpReq div {
+  /* background-color: #61dafb;
+  border-radius: 10px; */
+  margin-bottom: 3px;
+  text-align: left;
+}
+
+/* .sendHelp label {
+  display: inline-block;
+  text-align: left;
+  width: 100%;
+} */
+
+.helpReq span, .help span, .searchDetails span {
+  font-weight: 500;
 }
 
 .loginInputDiv, .regInputDiv, .myPageInputDiv {
@@ -158,16 +416,63 @@ a, button {
   opacity: 1;
 }
 
+.helpForm textarea {
+  height: 50px;
+  background-color: #dbdfe6;
+  border: 2px solid #909090;
+  border-radius: 10px;
+  padding: 10px;
+  font-family: 'Roboto', sans-serif;
+}
+
 .regForm input[type="submit"], .loginForm input[type="submit"] {
   height: 70px;
   padding: 0;
-  background-color: #e16330;
+  background-color: #a87144;
   color: #fff;
   font-size: 18px;
   font-weight: bolder;
   letter-spacing: 0.1em;
   text-align: center;
 }
+
+.sendHelp input[type="submit"] {
+  width: 50%;
+  background-color: #a87144;
+  color: #fff;
+}
+
+.hello {
+  position: absolute;
+  left: 30px;
+  top: 100px;
+  /* border: 1px solid red; */
+  margin-bottom: 30px;
+  font-size: 25px;
+  font-weight: 700;
+  font-family: 'Merienda', cursive;
+}
+
+.homepageDiv p {
+  font-family: 'Merienda', cursive;
+  font-size: 20px;
+}
+
+/* h3 {
+  font-family: 'Merienda', cursive;
+  font-weight: 700;
+} */
+
+.input-div input {
+  margin: 5px 0;
+  padding: 8px;
+  border-radius: 8px;
+  background-color: #dbdfe6;
+}
+
+/* .input-div ::placeholder {
+  padding: 3px;
+} */
 
 .loginForm input[type="submit"] {
   height: 50px;
@@ -178,13 +483,14 @@ a, button {
   margin: auto;
 }
 
-.usersHelpRequests {
-  width: 50vw;
-  border: 1px solid red;
+.helpForm input[type="submit"]:hover {
+  background-color: #909090;
+  color: #fff;
 }
 
-.deleteUser, .searchByCity, .searchDetails {
-  margin-top: 60px;
+.usersHelpRequests {
+  width: 100%;
+  /* border: 1px solid red; */
 }
 
 @media (prefers-reduced-motion: no-preference) {

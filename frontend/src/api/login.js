@@ -2,7 +2,8 @@ const axios = require("axios");
 
 export const sendLogin = async (email, password) => {
   const resp = await axios
-    .post("https://app.mankacs.site/api/login", {
+    // .post("https://app.mankacs.site/api/login", {
+    .post("http://localhost:8080/api/login", {
       email: email,
       password: password,
     })

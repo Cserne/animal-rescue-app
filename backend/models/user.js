@@ -9,10 +9,14 @@ const HelpRequestSchema = new mongoose.Schema({
     species: String,
     city: String,
     // time : { type : Date, default: Date.now },
-    date: Number,
+    // date: Number,
     description: String,
     helps: [HelpSchema]
-});
+},
+{
+    timestamps: true
+}
+);
 
 const UserSchema = new mongoose.Schema({
     username: { type: String, unique: true, required: true },

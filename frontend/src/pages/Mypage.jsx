@@ -4,7 +4,7 @@ import http from 'axios';
 import { addHelpRequest } from '../api/helpRequest';
 import UpdateHelp from '../components/UpdateHelp';
 import DeleteHelpRequest from '../components/DeleteHelpRequest';
-import DeleteUser from '../components/DeleteUser';
+// import DeleteUser from '../components/DeleteUser';
 import Navbar from '../components/Navbar';
 
 
@@ -15,9 +15,10 @@ const Mypage = () => {
   const [data, setData] = useState(null);
   const [species, setSpecies] = useState("");
   const [city, setCity] = useState("");
-  const [date, setDate] = useState("");
+  // const [date, setDate] = useState("");
   const [description, setDescription] = useState("");
-
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
 
   const isLoggedIn = async () => {
     const token = localStorage.getItem("token");
@@ -31,7 +32,8 @@ const Mypage = () => {
     const token = (JSON.parse(localStorage.getItem('token')).token);
     console.log("tokenke: ", token);
 
-      const response = await http.get("https://app.mankacs.site/api/user"
+      // const response = await http.get("https://app.mankacs.site/api/user"
+      const response = await http.get("http://localhost:8080/api/user"
       , {
         headers: {
           'Authorization': `Bearer ${token}`
@@ -47,8 +49,10 @@ const Mypage = () => {
         console.log(d._id)
         try {
           if(d._id === jwt_decode(localStorage.getItem("token"))._id) {
-            console.log('Zsír');
-            setData(d)
+            console.log('Zsír', d);
+            setData(d);
+            setName(d.username);
+            setEmail(d.email);
           }
         } catch (error) {
           console.log(error)
@@ -67,56 +71,39 @@ const Mypage = () => {
   const clearInputs = () => {
     setSpecies("");
     setCity("");
-    setDate("");
+    // setDate("");
     setDescription("");
+  };
+
+  const refreshPage = () => {
+    window.location.reload(false);
   };
 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     clearInputs();
-    addHelpRequest(species, city, date, description);
+    addHelpRequest(species, city, description);
+    refreshPage();
   };
 
 
   return (
-    <div>
+    <div className='myPageContainer'>
       <Navbar className='navbar'/>
       {/* {
         users && users.map((u) => (
           <DeleteUser u={u}/>
         ))
       } */}
-      {
-        data && 
-          <div>
-            {data.helpRequests.map((help) => (
-              <div className='myHelps'>
-                <div key={help._id}>HelpId: {help._id}</div>
-                <div key={help._id}>Állatfaj: {help.species}</div>
-                <div key={help._id}>Helyszín: {help.city}</div>
-                <div key={help._id}>Dátum: {help.date}</div>
-                <div key={help._id}>Leírás: {help.description}</div>
-                <div key={help._id}>Segítségek: {help.helps.map((h) => (
-                  <div>
-                    <UpdateHelp h={h} help={help}/>
-                  </div>
-                ))}
-                </div>
-                <DeleteHelpRequest help={help}/>
-              </div>
-            ))}
-            <div className='deleteUser'>
-              <DeleteUser data={data}/>
-            </div>
-          </div>
-      }
+      <div className='mainMyPage'>
       {
         loggedin && (
           <div className="myPage">
+          <div className='hello'>Welcome {name}!</div>
           <form className="helpForm" onSubmit={handleSubmit}>
             <label>
-              <h3>Register a new helprequest!</h3>
+              <h3>Send a new help request!</h3>
             </label>
             <div className="myPageInputDiv">
               <input
@@ -139,7 +126,7 @@ const Mypage = () => {
                 required
               />
             </div>
-            <div className="myPageInputDiv">
+            {/* <div className="myPageInputDiv">
               <input
                 type="text"
                 name="date"
@@ -148,9 +135,9 @@ const Mypage = () => {
                 onChange={(e) => setDate(e.target.value)}
                 required
               />
-            </div>
+            </div> */}
             <div className="myPageInputDiv">
-              <input
+              <textarea
                 type="textarea"
                 name="description"
                 placeholder="description"
@@ -167,6 +154,39 @@ const Mypage = () => {
     
         )
       }
+      <h2>My helprequests</h2>
+            {
+        data && 
+          <div className='showMyHelpRequests'>
+            {data.helpRequests.map((help) => (
+              <div className='myHelps'>
+                {/* <div key={help._id}>HelpId: {help._id}</div> */}
+                <div className='myPageHelpReq'>
+                  <div key={help._id}>Username: {data.username}</div>
+                  <div key={help._id}>Species: {help.species}</div>
+                  <div key={help._id}>City: {help.city}</div>
+                  {/* <div key={help._id}>Date: {help.date}</div> */}
+                  <div key={help._id}>Date: {new Date(help.createdAt).toLocaleDateString()}</div>
+                  <div key={help._id}>Description: {help.description}</div>
+                </div>
+                <div className='myPageHelpDesc'>
+                  <div key={help._id}>Helps: {help.helps.map((h) => (
+                    <div>
+                      <UpdateHelp h={h} help={help}/>
+                    </div>
+                  ))}
+                  </div>
+                  <DeleteHelpRequest help={help}/>
+                </div>
+              </div>
+
+            ))}
+            {/* <div className='deleteUser'>
+              <DeleteUser data={data}/>
+            </div> */}
+          </div>
+      }
+      </div>
     </div>
   )
 }

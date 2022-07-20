@@ -94,7 +94,7 @@ describe('/api/helprequest tests', () => {
     //     // when
         const response = await client.post('/api/helprequest').send({
             city: 'Szeged',
-            date: 2022,
+            // date: 2022,
             description: 'Találtam egy cicát.'
         });
         
@@ -117,7 +117,7 @@ describe('/api/helprequest tests', () => {
     //     // when
         const response = await client.post('/api/helprequest').send({
             species: 'cica',
-            date: 2022,
+            // date: 2022,
             description: 'Találtam egy cicát.'
         });
         
@@ -125,28 +125,28 @@ describe('/api/helprequest tests', () => {
         expect(response.status).toBe(422);
     });
 
-    test('should return 422 when test user posts a new helprequest without date', async () => {
-    //     // given
-        const newUser = new User({
-            username: 'Cirmi',
-            email: 'cirmi@gmail.com',
-            password: 'cirmi'
-        });
-        await newUser.save();
+    // test('should return 422 when test user posts a new helprequest without date', async () => {
+    // //     // given
+    //     const newUser = new User({
+    //         username: 'Cirmi',
+    //         email: 'cirmi@gmail.com',
+    //         password: 'cirmi'
+    //     });
+    //     await newUser.save();
 
-        const token = jwt.sign({ _id: newUser._id }, process.env.JWT_SECRET);
-        client.set('authorization', token);
+    //     const token = jwt.sign({ _id: newUser._id }, process.env.JWT_SECRET);
+    //     client.set('authorization', token);
     
-    //     // when
-        const response = await client.post('/api/helprequest').send({
-            species: 'cica',
-            city: 'Szeged',
-            description: 'Találtam egy cicát.'
-        });
+    // //     // when
+    //     const response = await client.post('/api/helprequest').send({
+    //         species: 'cica',
+    //         city: 'Szeged',
+    //         description: 'Találtam egy cicát.'
+    //     });
         
-    //     //then
-        expect(response.status).toBe(422);
-    });
+    // //     //then
+    //     expect(response.status).toBe(422);
+    // });
 
     test('should return 422 when test user posts a new helprequest without description', async () => {
     //     // given
@@ -164,7 +164,7 @@ describe('/api/helprequest tests', () => {
         const response = await client.post('/api/helprequest').send({
             species: 'cica',
             city: 'Szeged',
-            date: 2022
+            // date: 2022
         });
         
     //     //then
@@ -245,7 +245,9 @@ describe('/api/helprequest tests', () => {
             username: 'Cirmi',
             email: 'cirmi@gmail.com',
             password: 'cirmi',
-            helpRequests: [{_id: '62c852240dea0f4ed695c381', species: 'cica', city: 'Szeged', date: 2022, description: 'Találtam egy cicát.'}]
+            helpRequests: [{_id: '62c852240dea0f4ed695c381', species: 'cica', city: 'Szeged',
+            // date: 2022,
+            description: 'Találtam egy cicát.'}]
         });
         await newUser.save();
 
@@ -268,7 +270,9 @@ describe('/api/helprequest tests', () => {
             username: 'Cirmi',
             email: 'cirmi@gmail.com',
             password: 'cirmi',
-            helpRequests: [{_id: '62c852240dea0f4ed695c381', species: 'cica', city: 'Szeged', date: 2022, description: 'Találtam egy cicát.'}]
+            helpRequests: [{_id: '62c852240dea0f4ed695c381', species: 'cica', city: 'Szeged',
+            // date: 2022, 
+            description: 'Találtam egy cicát.'}]
         });
         await newUser1.save();
         const newUser2 = new User({
@@ -303,7 +307,9 @@ describe('/api/helprequest tests', () => {
             username: 'Cirmi',
             email: 'cirmi@gmail.com',
             password: 'cirmi',
-            helpRequests: [{_id: '62c852240dea0f4ed695c381', species: 'cica', city: 'Szeged', date: 2022, description: 'Találtam egy cicát.', helps: [{_id: '62c852240dea0f4ed695c393', userId: '62c863ae0b97fe7a5a9672ad', description: 'Segítek'}]}]
+            helpRequests: [{_id: '62c852240dea0f4ed695c381', species: 'cica', city: 'Szeged',
+            // date: 2022, 
+            description: 'Találtam egy cicát.', helps: [{_id: '62c852240dea0f4ed695c393', userId: '62c863ae0b97fe7a5a9672ad', description: 'Segítek'}]}]
         });
         await newUser1.save();
         const newUser2 = new User({

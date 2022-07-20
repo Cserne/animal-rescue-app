@@ -9,7 +9,8 @@ const DeleteHelpRequest = ({help}) => {
 
       if (token) {
         try {
-          const response = await http.delete(`https://app.mankacs.site/api/helprequest/${help._id}`, 
+          // const response = await http.delete(`https://app.mankacs.site/api/helprequest/${help._id}`, 
+          const response = await http.delete(`http://localhost:8080/api/helprequest/${help._id}`, 
             {
               headers: {
                 'Authorization': `Bearer ${token}`
@@ -23,11 +24,20 @@ const DeleteHelpRequest = ({help}) => {
           return error;
         }
       }
-  } 
+  }
+
+  const refreshPage = () => {
+    window.location.reload(false);
+  };
+
+  const deleteHelpRequest = () => {
+    deleteHelpReq();
+    refreshPage();
+  }
 
   return (
-    <div>
-        <button onClick={deleteHelpReq} key={help._id}>Törlés</button>
+    <div className='myPageDeleteHelpReq'>
+        <button onClick={deleteHelpRequest} key={help._id}>Delete</button>
     </div>
   )
 }

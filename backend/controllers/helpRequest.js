@@ -6,10 +6,10 @@ const mongoose = require('mongoose');
 const helpRequest = async(req, res) => {
     const species = req.body.species;
     const city = req.body.city;
-    const date = req.body.date;
+    // const date = req.body.date;
     const description = req.body.description;
     
-    if ( !species || ! city || !date || !description ) {
+    if ( !species || ! city || !description ) {
         return res.status(422).json("All field are required")
     };
     const {authorization} = req.headers;
@@ -22,7 +22,7 @@ const helpRequest = async(req, res) => {
             res.status(401).json("Log in first!")
         }
         const {_id} = payload;
-        User.findByIdAndUpdate(_id, { $push: { helpRequests: { species, city, date, description
+        User.findByIdAndUpdate(_id, { $push: { helpRequests: { species, city, description
             // , helps: { description, userId: req.user._id }
          } } }, { new: true }).then( (help) => {
             if(help) {

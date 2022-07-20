@@ -2,7 +2,8 @@ const http = require("axios");
 
 export const sendRegistration = async (username, email, password) => {
   const resp = await http
-    .post("https://app.mankacs.site/api/signup", {
+    // .post("https://app.mankacs.site/api/signup", {
+    .post("http://localhost:8080/api/signup", {
       username: username,
       email: email,
       password: password,

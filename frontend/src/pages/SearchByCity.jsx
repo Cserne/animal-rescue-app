@@ -16,7 +16,8 @@ const SearchByCity = () => {
         if ((token)) {
           try {
             const response = await http.get(
-              `https://app.mankacs.site/query/api/helprequest`, {
+              // `https://app.mankacs.site/query/api/helprequest`, {
+              `http://localhost:8080/query/api/helprequest`, {
                 params: {
                   city: city
                 }},
@@ -56,21 +57,21 @@ const SearchByCity = () => {
   return (
     <div>
         <Navbar/>
-              <form className="searchByCity" onSubmit={handleSubmit}>
+            <form className="searchByCity" onSubmit={handleSubmit}>
                 <label>
-                Keress helyszín alapján!
+                Filter by city!
                 </label>
                 <div className="input-div">
                 <input
                     type="textarea"
                     name="city"
-                    placeholder="helyszín"
+                    placeholder="city"
                     value={city}
                     onChange={(e) => setCity(e.target.value)}
                     required
                 />
                 </div>
-                <input type="submit" value="Új keresés" />
+                <input type="submit" value="New search" />
             </form>
 
             {
@@ -78,11 +79,11 @@ const SearchByCity = () => {
                 description.map((desc) => (
                     <div className='searchDetails'>
                     {/* <div>{description}</div> */}
-                        <div key={desc._id}>Posztoló: {desc.username} ({desc.email})</div>
-                        <div key={desc._id}>Állatfaj: {desc.helpRequests.species}</div>
-                        <div key={desc._id}>Helyszín: {desc.helpRequests.city}</div>
-                        <div key={desc._id}>Részletek: {desc.helpRequests.description}</div>
-                        <div key={desc._id}>Segítségek: {desc.helpRequests.helps.map((d) => (
+                        <div key={desc._id}><span>User: </span>{desc.username} ({desc.email})</div>
+                        <div key={desc._id}><span>Species: </span>{desc.helpRequests.species}</div>
+                        <div key={desc._id}><span>City: </span>{desc.helpRequests.city}</div>
+                        <div key={desc._id}><span>Details: </span>{desc.helpRequests.description}</div>
+                        <div key={desc._id}><span>Helps: </span>{desc.helpRequests.helps.map((d) => (
                             <div key={d}>{d.description}</div>
                         ))}</div>
                         {/* <div key={desc._id}>{desc.city}</div>

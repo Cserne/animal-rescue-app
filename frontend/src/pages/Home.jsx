@@ -22,9 +22,9 @@ const Home = () => {
     <div className="homepage">
       <Navbar />
       <div>
-        <h1>Homepage</h1>
+        {/* <h1>Homepage</h1> */}
         <div className="homepageDiv">
-          <h3>Welcome to our website!</h3>
+          <h1>Welcome to our website!</h1>
           <p>Our goal is to help animals in need.</p>
         </div>
       </div>

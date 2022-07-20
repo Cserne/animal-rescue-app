@@ -14,7 +14,8 @@ const HelpReq = ({helpreq, d}) => {
         if ((token && description) && decoded._id !== d._id) {
           try {
             const response = await http.post(
-              `https://app.mankacs.site/api/helprequest/${helpreq._id}/help`, 
+              // `https://app.mankacs.site/api/helprequest/${helpreq._id}/help`, 
+              `http://localhost:8080/api/helprequest/${helpreq._id}/help`, 
               {
                 description: description
               }, {
@@ -34,50 +35,61 @@ const HelpReq = ({helpreq, d}) => {
 
     const clearInputs = () => {
         setDescription("");
-      };
+    };
+
+    const refreshPage = () => {
+      window.location.reload(false);
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         clearInputs();
         sendHelp(description);
-      };
+        refreshPage();
+    };
 
   return (
     <div className='helpReq'>
-        <div key={helpreq._id}>Posztoló: {d.username} ({d.email})</div>
-        <div key={helpreq._id}>Állatfaj: {helpreq.species}</div>
-        <div key={helpreq._id}>Helyszín: {helpreq.city}</div>
-        <div key={helpreq._id}>Dátum: {helpreq.date}</div>
-        <div key={helpreq._id}>Részletek: {helpreq.description}</div>
-        {
-            <>
-            <form className="sendHelp" onSubmit={handleSubmit}>
-            <label>
-              Please fill!
-            </label>
-            <div className="input-div">
-              <input
-                type="textarea"
-                name="help"
-                placeholder="send help"
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-                required
-              />
-            </div>
-    
-            <input type="submit" value="Elküld" />
-          </form>
+      <div className='showAllHelpReq'>
+        <div>
+          <div key={helpreq._id}><span>User: </span>{d.username} ({d.email})</div>
+          <div key={helpreq._id}><span>Species: </span>{helpreq.species}</div>
+          <div key={helpreq._id}><span>City: </span>{helpreq.city}</div>
+          <div key={helpreq._id}><span>Date: </span>{new Date(helpreq.createdAt).toLocaleDateString()}</div>
+          <div key={helpreq._id}><span>Details: </span>{helpreq.description}</div>
+          {
+              <>
+              <form className="sendHelp" onSubmit={handleSubmit}>
+              <label>
+                Send help down below!
+              </label>
+              <div className="input-div">
+                <input
+                  type="textarea"
+                  name="help"
+                  placeholder="I want to help"
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
+                  required
+                />
+              </div>
+      
+              <input type="submit" value="Send" />
+            </form>
 
-            </> 
-        }
-        <div key={helpreq._id}>{helpreq.helps.map((help) => (
-            <>
-                <div key={help._id}>{help.description}</div>
-                <div key={help._id}>{help.userId}</div>
-            </>
-        ))}</div>
+              </> 
+          }
+        </div>
+        <div>
+          <div key={helpreq._id}><span>Helps: </span>{helpreq.helps.map((help) => (
+              <>
+                  <div key={help._id}>{help.description}</div>
+                  {/* <div key={help._id}>{help.userId}</div> */}
+              </>
+          ))}</div>
+        </div>
 
+      </div>
     </div>
   )
 }

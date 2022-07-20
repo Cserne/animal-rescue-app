@@ -13,7 +13,7 @@ const UpdateHelp = ({h, help}) => {
         if ((token && description)) {
           try {
             const response = await http.patch(
-              `https://app.mankacs.site/api/helprequest/${help._id}/help/${h._id}`, 
+              `http://localhost:8080/api/helprequest/${help._id}/help/${h._id}`, 
               {
                 description: description
               }, {
@@ -35,10 +35,15 @@ const UpdateHelp = ({h, help}) => {
         setDescription("");
     };
 
+    const refreshPage = () => {
+      window.location.reload(false);
+    };  
+
     const handleSubmit = (e) => {
         e.preventDefault();
         clearInputs();
         updateDescription(description);
+        refreshPage();
         // setDescription(true);
     }
     return (
@@ -61,7 +66,7 @@ const UpdateHelp = ({h, help}) => {
                     required
                 />
                 </div>
-                <input type="submit" value="Elküld" />
+                <input type="submit" value="Send" />
             </form>
         
 

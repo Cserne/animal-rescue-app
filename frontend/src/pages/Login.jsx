@@ -59,9 +59,9 @@ const Login = () => {
           </div>
 
           <input type="submit" value="Login" />
-          <button className="reset-button" onClick={() => navigate("/reset")}>
+          {/* <button className="reset-button" onClick={() => navigate("/reset")}>
             Forgot your password?
-          </button>
+          </button> */}
         </form>
       </div>
   );

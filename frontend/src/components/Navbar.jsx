@@ -33,31 +33,37 @@ const Navbar = () => {
     <div className="navbar">
       <Link to="/" className="navbar-btn">
         <div>
-          <p>HOMEPAGE</p>
+          <p>homepage</p>
         </div>
       </Link>
-      <button onClick={openMap}>Állatorvos Kereső</button>
+      <button onClick={openMap}>find vet</button>
 
       {loggedin && (
         <>
           <Link to="/mypage" className="navbar-btn">
             <div className="navbar-btn">
-              <p>My PAGE</p>
+              <p>my page</p>
             </div>
           </Link>
-          <Link to="/helps" className="navbar-btn">
+          {/* <Link to="/helps" className="navbar-btn">
             <div className="navbar-btn">
-              <p>HELPS</p>
+              <p>helps</p>
             </div>
-          </Link>
+          </Link> */}
           <Link to="/showallusers" className="navbar-btn">
             <div className="navbar-btn">
-              <p>ALL USERS</p>
+              {/* <p>all users</p> */}
+              <p>helps</p>
             </div>
           </Link>
           <Link to="/searchbycity" className="navbar-btn">
             <div className="navbar-btn">
-              <p>Search by city</p>
+              <p>search by city</p>
+            </div>
+          </Link>
+          <Link to="/deleteprofile" className="navbar-btn">
+            <div className="navbar-btn">
+              <p>delete profile</p>
             </div>
           </Link>
         </>
@@ -66,12 +72,12 @@ const Navbar = () => {
         <>
           <Link to="/register" className="navbar-btn">
             <div>
-              <p>REGISTER</p>
+              <p>register</p>
             </div>
           </Link>
           <Link to="/login" className="navbar-btn">
             <div className="navbar-btn">
-              <p>LOGIN</p>
+              <p>login</p>
             </div>
           </Link>
         </>
@@ -87,7 +93,7 @@ const Navbar = () => {
             className="navbar-btn"
           >
             <div className="navbar-btn">
-              <p>LOGOUT</p>
+              <p>logout</p>
             </div>
           </Link>
           {/* <h6>Hi {email}, you're logged in!</h6> */}
