@@ -138,7 +138,7 @@ const updateHelp = async (req, res) => {
                     res = helps[i]._id.toString().replace(/new ObjectId\("(.*)"\)/, "$1")
                     if(res === req.params._helpid) 
                     {
-                        helps[i].description = helps[i].description + " " + result.username + ": " + req.body.description;
+                        helps[i].description = helps[i].description + " || " + result.username + ": " + req.body.description;
                         console.log('helps', helps[i].description);
                     }
                 }
