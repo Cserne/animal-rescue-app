@@ -82,10 +82,10 @@ const HelpReq = ({helpreq, d}) => {
         </div>
         <div>
           <div key={helpreq._id}><span>Helps: </span>{helpreq.helps.map((help) => (
-              <>
+              <div className='hh'>
                   <div key={help._id}>{help.description}</div>
                   {/* <div key={help._id}>{help.userId}</div> */}
-              </>
+              </div>
           ))}</div>
         </div>
 

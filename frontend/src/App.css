@@ -54,10 +54,6 @@ button, input, textarea {
   margin-bottom: 20px;
 }
 
-.myPageHelpDesc {
-  
-}
-
 .helpsPage {
   margin: 30px auto;
 }
@@ -120,6 +116,19 @@ a, button {
   font-weight: bold;
 }
 
+.reg-form input[type="submit"] {
+  padding: 4px 8px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  margin-left: 25px;
+}
+
+.reg-form input[type="submit"]:hover {
+  border-radius: 10px;
+  background-color: #909090;
+  color: #fff;
+}
+
 .searchByCity {
   width: 300px;
   margin: 110px auto 0;
@@ -162,6 +171,10 @@ a, button {
 
 .searchByCity input {
   font-family: 'Roboto', sans-serif;
+}
+
+.searchByCity input[type="submit"] {
+  font-size: 14px;
 }
 
 .searchByCity input[type="submit"]:hover {
@@ -253,7 +266,7 @@ a, button {
   justify-content: space-evenly;
   border: 2px solid #d6a3a3;
   border-radius: 10px;
-  background-color: rgba(248, 248, 248, 0.3);
+  background-color: rgba(248, 248, 248, 0.8);
   box-shadow: 1px 1px 8px 2px #000000;
   text-align: left;
 }
@@ -394,7 +407,11 @@ a, button {
   width: 100%;
 } */
 
-.helpReq span, .help span, .searchDetails span {
+.myPageHelpReq div {
+  margin-bottom: 15px;
+}
+
+.helpReq span, .help span, .searchDetails span, .myPageHelpReq span, .myPageHelpDesc span {
   font-weight: 500;
 }
 
@@ -445,7 +462,7 @@ a, button {
 .hello {
   position: absolute;
   left: 30px;
-  top: 100px;
+  top: 110px;
   /* border: 1px solid red; */
   margin-bottom: 30px;
   font-size: 25px;
@@ -464,6 +481,7 @@ a, button {
 } */
 
 .input-div input {
+  width: 250px;
   margin: 5px 0;
   padding: 8px;
   border-radius: 8px;

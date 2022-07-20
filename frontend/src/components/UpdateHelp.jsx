@@ -53,9 +53,9 @@ const UpdateHelp = ({h, help}) => {
         {
             showForm &&
             <form key={h._id} className="reg-form" onSubmit={handleSubmit}>
-                <label>
+                {/* <label>
                 Please fill!
-                </label>
+                </label> */}
                 <div className="input-div">
                 <input
                     type="textarea"

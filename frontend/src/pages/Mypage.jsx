@@ -162,15 +162,15 @@ const Mypage = () => {
               <div className='myHelps'>
                 {/* <div key={help._id}>HelpId: {help._id}</div> */}
                 <div className='myPageHelpReq'>
-                  <div key={help._id}>Username: {data.username}</div>
-                  <div key={help._id}>Species: {help.species}</div>
-                  <div key={help._id}>City: {help.city}</div>
+                  <div key={help._id}><span>Username: </span>{data.username}</div>
+                  <div key={help._id}><span>Species: </span>{help.species}</div>
+                  <div key={help._id}><span>City: </span>{help.city}</div>
                   {/* <div key={help._id}>Date: {help.date}</div> */}
-                  <div key={help._id}>Date: {new Date(help.createdAt).toLocaleDateString()}</div>
-                  <div key={help._id}>Description: {help.description}</div>
+                  <div key={help._id}><span>Date: </span>{new Date(help.createdAt).toLocaleDateString()}</div>
+                  <div key={help._id}><span>Description: </span>{help.description}</div>
                 </div>
                 <div className='myPageHelpDesc'>
-                  <div key={help._id}>Helps: {help.helps.map((h) => (
+                  <div key={help._id}><span>Helps: </span>{help.helps.map((h) => (
                     <div>
                       <UpdateHelp h={h} help={help}/>
                     </div>
