@@ -13,8 +13,8 @@ const UpdateHelp = ({h, help}) => {
         if ((token && description)) {
           try {
             const response = await http.patch(
-              `https://app.mankacs.site/api/helprequest/${help._id}/help/${h._id}`, 
-              // `http://localhost:8080/api/helprequest/${help._id}/help/${h._id}`, 
+              // `https://app.mankacs.site/api/helprequest/${help._id}/help/${h._id}`, 
+              `http://localhost:8080/api/helprequest/${help._id}/help/${h._id}`, 
               {
                 description: description
               }, {

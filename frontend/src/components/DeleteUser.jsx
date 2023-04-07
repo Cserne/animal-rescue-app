@@ -25,8 +25,8 @@ const DeleteUser = ({data}) => {
         
         if (token) {
           try {
-            const response = await http.delete(`https://app.mankacs.site/api/user/${data._id}`, 
-            // const response = await http.delete(`http://localhost:8080/api/user/${data._id}`, 
+            // const response = await http.delete(`https://app.mankacs.site/api/user/${data._id}`, 
+            const response = await http.delete(`http://localhost:8080/api/user/${data._id}`, 
               {
                 headers: {
                   'Authorization': `Bearer ${token}`

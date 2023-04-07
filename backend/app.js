@@ -12,8 +12,8 @@ const app = express();
 
 app.use(
     cors({
-        origin: 'https://site.mankacs.site' || 'http://localhost:3000',
-        // origin: 'http://localhost:3000',
+        // origin: 'https://site.mankacs.site' || 'http://localhost:3000',
+        origin: 'http://localhost:3000',
     })
 );
 app.use(express.json());
