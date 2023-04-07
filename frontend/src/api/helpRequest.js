@@ -8,8 +8,8 @@ export const addHelpRequest = async (species, city, description) => {
     if ((token && species && city && description)) {
       try {
         const response = await http.post(
-          // "https://app.mankacs.site/api/helprequest", 
-          "http://localhost:8080/api/helprequest", 
+          "https://app.mankacs.site/api/helprequest", 
+          // "http://localhost:8080/api/helprequest", 
           {
             species: species,
             city: city,

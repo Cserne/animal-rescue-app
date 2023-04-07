@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1658277958667" clover="3.2.0">
-  <project timestamp="1658277958667" name="All files">
-    <metrics statements="225" coveredstatements="163" conditionals="58" coveredconditionals="18" methods="45" coveredmethods="28" elements="328" coveredelements="209" complexity="0" loc="225" ncloc="225" packages="6" files="10" classes="10"/>
+<coverage generated="1658300113610" clover="3.2.0">
+  <project timestamp="1658300113611" name="All files">
+    <metrics statements="225" coveredstatements="163" conditionals="60" coveredconditionals="19" methods="45" coveredmethods="28" elements="330" coveredelements="210" complexity="0" loc="225" ncloc="225" packages="6" files="10" classes="10"/>
     <package name="backend">
-      <metrics statements="15" coveredstatements="15" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <metrics statements="15" coveredstatements="15" conditionals="2" coveredconditionals="1" methods="0" coveredmethods="0"/>
       <file name="app.js" path="C:\Users\Dell\Desktop\Full Stack\Exam-Project\Exam-2\fapi-exam-project-2-general-Cserne\backend\app.js">
-        <metrics statements="15" coveredstatements="15" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <metrics statements="15" coveredstatements="15" conditionals="2" coveredconditionals="1" methods="0" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>

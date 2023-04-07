@@ -16,8 +16,8 @@ const SearchByCity = () => {
         if ((token)) {
           try {
             const response = await http.get(
-              // `https://app.mankacs.site/query/api/helprequest`, {
-              `http://localhost:8080/query/api/helprequest`, {
+              `https://app.mankacs.site/query/api/helprequest`, {
+              // `http://localhost:8080/query/api/helprequest`, {
                 params: {
                   city: city
                 }},

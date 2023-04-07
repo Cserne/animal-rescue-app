@@ -9,8 +9,8 @@ const DeleteHelpRequest = ({help}) => {
 
       if (token) {
         try {
-          // const response = await http.delete(`https://app.mankacs.site/api/helprequest/${help._id}`, 
-          const response = await http.delete(`http://localhost:8080/api/helprequest/${help._id}`, 
+          const response = await http.delete(`https://app.mankacs.site/api/helprequest/${help._id}`, 
+          // const response = await http.delete(`http://localhost:8080/api/helprequest/${help._id}`, 
             {
               headers: {
                 'Authorization': `Bearer ${token}`
