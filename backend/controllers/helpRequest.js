@@ -9,9 +9,9 @@ const helpRequest = async(req, res) => {
     // const date = req.body.date;
     const description = req.body.description;
     
-    if ( !species || ! city || !description ) {
-        return res.status(422).json("All field are required")
-    };
+    // if ( !species || !city || !description ) {              form "input required" takes care of this
+    //     return res.status(422).json("All field are required")
+    // };
     const {authorization} = req.headers;
     if (!authorization) {
         res.status(401).json("Log in!")

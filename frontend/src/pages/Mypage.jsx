@@ -142,7 +142,8 @@ const Mypage = () => {
                 name="description"
                 placeholder="description"
                 minLength={15}
-                value={description}
+                defaultValue={''}
+                // value={description}            If value is given, minLength gets ignored in textarea, so defaultValue is used instead.
                 onChange={(e) => setDescription(e.target.value)}
                 required
               />

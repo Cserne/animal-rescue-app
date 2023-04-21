@@ -13,7 +13,7 @@ const requireLogin = (req, res, next) => {
             res.status(401).json("Log in first!")
         }
         const {_id} = payload;
-        User.findById(_id).then(userdata => {
+        User.findById(_id).then( userdata => {
             req.user = userdata;
             next();
         })
