@@ -10,10 +10,10 @@ export const sendLogin = async (email, password) => {
     .catch((error) => {
       if (error.response.status === 400) {
         window.alert("all fields are required!");
-      }
-      if (error.response.status === 401) {
-        window.alert("wrong username or password!");
-      }
+      };
+      if (error.response.status === 422) {
+        window.alert("Invalid email or password!");
+      };
     });
   return resp.data;
 };

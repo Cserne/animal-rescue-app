@@ -19,7 +19,7 @@ const login = async (req, res) => {
         User.findOne({email: email})
         .then( savedUser => {
             if (!savedUser) {
-               return res.status(422).json({error:"Invalid Email or password"})
+               return res.status(422).json({error:"Invalid email or password"})
             }
             bcrypt.compare(password, savedUser.password)
             .then(doMatch => {
@@ -28,7 +28,7 @@ const login = async (req, res) => {
                    res.status(200).json({token})
                 }
                 else{
-                    return res.status(422).json({error:"Invalid Email or password"})
+                    return res.status(422).json({error:"Invalid email or password"})
                 }
             })
             .catch(err => {
@@ -39,7 +39,7 @@ const login = async (req, res) => {
         User.findOne({username: email})
         .then( savedUser => {
             if (!savedUser) {
-               return res.status(422).json({error:"Invalid Email or password"})
+               return res.status(422).json({error:"Invalid email or password"})
             }
             bcrypt.compare(password, savedUser.password)
             .then(doMatch => {
@@ -48,7 +48,7 @@ const login = async (req, res) => {
                    res.status(200).json({token})
                 }
                 else{
-                    return res.status(422).json({error:"Invalid Email or password"})
+                    return res.status(422).json({error:"Invalid email or password"})
                 }
             })
             .catch(err => {

@@ -10,10 +10,10 @@ export const sendRegistration = async (username, email, password) => {
     })
     .catch((error) => {
       if (error.response.status === 400) {
-        window.alert("all fileds required!");
+        window.alert("All fields are required!");
       }
-      if (error.response.status === 401) {
-        window.alert("username or email already taken!");
+      if (error.response.status === 422) {
+        window.alert("Username or email already taken!");
       }
     });
   return resp.data;
