@@ -6,9 +6,9 @@ const JWT_SECRET = process.env.JWT_SECRET;
 
 const login = async (req, res) => {
     const { email, password } = req.body;
-    if( !email || !password ) {
-       return res.status(422).json({error:"please add email or password"})
-    };
+    // if( !email || !password ) {              form "input required" takes care of this
+    //    return res.sendStatus(400);
+    // };
 
     const isEmail = (str) => {
       if (str.includes('@') && str.includes('.')) return true;
@@ -19,7 +19,7 @@ const login = async (req, res) => {
         User.findOne({email: email})
         .then( savedUser => {
             if (!savedUser) {
-               return res.status(422).json({error:"Invalid email or password"})
+               return res.sendStatus(422);
             }
             bcrypt.compare(password, savedUser.password)
             .then(doMatch => {
@@ -28,7 +28,7 @@ const login = async (req, res) => {
                    res.status(200).json({token})
                 }
                 else{
-                    return res.status(422).json({error:"Invalid email or password"})
+                    return res.sendStatus(422);
                 }
             })
             .catch(err => {
@@ -39,7 +39,7 @@ const login = async (req, res) => {
         User.findOne({username: email})
         .then( savedUser => {
             if (!savedUser) {
-               return res.status(422).json({error:"Invalid email or password"})
+               return res.sendStatus(422);
             }
             bcrypt.compare(password, savedUser.password)
             .then(doMatch => {
@@ -48,7 +48,7 @@ const login = async (req, res) => {
                    res.status(200).json({token})
                 }
                 else{
-                    return res.status(422).json({error:"Invalid email or password"})
+                    return res.sendStatus(422);
                 }
             })
             .catch(err => {

@@ -8,11 +8,11 @@ export const sendLogin = async (email, password) => {
       password: password,
     })
     .catch((error) => {
-      if (error.response.status === 400) {
-        window.alert("all fields are required!");
-      };
+      // if (error.response.status === 400) {              form "input" required" takes care of this
+      //   window.alert("All fields are required!");
+      // };
       if (error.response.status === 422) {
-        window.alert("Invalid email or password!");
+        window.alert("Invalid username, email or password!");
       };
     });
   return resp.data;

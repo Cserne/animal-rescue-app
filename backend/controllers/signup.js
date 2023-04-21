@@ -5,9 +5,9 @@ const User = require("../models/user");
 
 const register = async (req, res) => {
   const { username, email, password } = req.body;
-  if( !username || !email || !password ){
-     return res.sendStatus(400);
-  };
+  // if( !username || !email || !password ){              form "input required" takes care of this
+  //    return res.sendStatus(400);
+  // };
   User.findOne({email: email})
   .then(( savedUser ) => {
       if ( savedUser ) {

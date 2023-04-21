@@ -18,7 +18,7 @@ const Login = () => {
     e.preventDefault();
     clearInputs();
     let resp = await sendLogin(email, password);
-    let result = JSON.stringify(resp)
+    let result = JSON.stringify(resp);
     localStorage.setItem("token", result);
     console.log(result);
 

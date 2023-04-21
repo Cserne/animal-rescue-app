@@ -9,12 +9,12 @@ export const sendRegistration = async (username, email, password) => {
       password: password,
     })
     .catch((error) => {
-      if (error.response.status === 400) {
-        window.alert("All fields are required!");
-      }
+      // if (error.response.status === 400) {              form "input required" takes care of this
+      //   window.alert("All fields are required!");
+      // };
       if (error.response.status === 422) {
         window.alert("Username or email already taken!");
-      }
+      };
     });
   return resp.data;
 };

@@ -63,7 +63,7 @@ const Register = () => {
                   onChange={(e) => {
                     setUsername(e.target.value);
                   }}
-                  // required
+                  required
                 />
                 {
                 // usernameTaken && 
@@ -85,7 +85,7 @@ const Register = () => {
                     //    &&
                     //   checkValid("email", e.target.value);
                   }}
-                  // required
+                  required
                 />
                 {
                 // emailTaken &&
@@ -100,7 +100,7 @@ const Register = () => {
                   minLength={5}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  // required
+                  required
                 />
               </div>
             </div>
