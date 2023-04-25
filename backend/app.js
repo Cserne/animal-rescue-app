@@ -16,7 +16,7 @@ app.use(
         origin: 'http://localhost:3000',
     })
 );
-app.use(express.json());
+app.use(express.json({limit: "30mb", extended: true})); // the limit is needed because of the image upload
 
 app.use(
     morgan(':method :url :status :res[content-length] - :response-time ms')

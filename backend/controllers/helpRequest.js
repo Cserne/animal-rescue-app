@@ -8,6 +8,7 @@ const helpRequest = async(req, res) => {
     const city = req.body.city;
     // const date = req.body.date;
     const description = req.body.description;
+    const image = req.body.image;
     
     // if ( !species || !city || !description ) {              form "input required" takes care of this
     //     return res.status(422).json("All field are required")
@@ -22,7 +23,7 @@ const helpRequest = async(req, res) => {
             res.status(401).json("Log in first!")
         }
         const {_id} = payload;
-        User.findByIdAndUpdate(_id, { $push: { helpRequests: { species, city, description
+        User.findByIdAndUpdate(_id, { $push: { helpRequests: { species, city, description, image
             // , helps: { description, userId: req.user._id }
          } } }, { new: true }).then( (help) => {
             if(help) {

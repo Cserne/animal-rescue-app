@@ -255,6 +255,14 @@ a, button {
   justify-content: space-evenly;
 }
 
+.showAllHelpReq div:first-child {
+  width: 80%;
+}
+
+/* .showAllHelpReq div:nth-child(2) {
+  width: 85%;
+} */
+
 .searchDetails {
   /* margin-left: 50px; */
   margin: 60px auto 0;
@@ -511,12 +519,6 @@ a, button {
   /* border: 1px solid red; */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -532,11 +534,8 @@ a, button {
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+img {
+  min-width: 250px;
+  width: 30%;
+  border-radius: 5px;
 }

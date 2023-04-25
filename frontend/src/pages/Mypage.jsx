@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import jwt_decode from 'jwt-decode';
 import http from 'axios';
+import FileBase64 from 'react-file-base64';
 import { addHelpRequest } from '../api/helpRequest';
 import UpdateHelp from '../components/UpdateHelp';
 import DeleteHelpRequest from '../components/DeleteHelpRequest';
@@ -17,6 +18,7 @@ const Mypage = () => {
   const [city, setCity] = useState("");
   // const [date, setDate] = useState("");
   const [description, setDescription] = useState("");
+  const [image, setImage] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
 
@@ -73,6 +75,7 @@ const Mypage = () => {
     setCity("");
     // setDate("");
     setDescription("");
+    setImage("");
   };
 
   const refreshPage = () => {
@@ -83,7 +86,7 @@ const Mypage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     clearInputs();
-    addHelpRequest(species, city, description);
+    addHelpRequest(species, city, description, image);
     refreshPage();
   };
 
@@ -148,7 +151,12 @@ const Mypage = () => {
                 required
               />
             </div>
-    
+            {/* <input type='file' onChange={(e) => setImage(URL.createObjectURL(e.target.files[0]))}/> */}
+            <FileBase64
+            type="file"
+            multiple={false}
+            onDone={({ base64 }) => setImage(base64)}
+            />
             <input type="submit" value="Submit" />
           </form>
         </div>
@@ -169,6 +177,7 @@ const Mypage = () => {
                   {/* <div key={help._id}>Date: {help.date}</div> */}
                   <div key={help._id}><span>Date: </span>{new Date(help.createdAt).toLocaleDateString()}</div>
                   <div key={help._id}><span>Description: </span>{help.description}</div>
+                  <img key={help._id} src={help.image} alt='img'></img>
                 </div>
                 <div className='myPageHelpDesc'>
                   <div key={help._id}><span>Helps: </span>{help.helps.map((h) => (

@@ -1,6 +1,6 @@
 import http from 'axios';
 
-export const addHelpRequest = async (species, city, description) => {
+export const addHelpRequest = async (species, city, description, image) => {
     const token = (JSON.parse(localStorage.getItem('token')).token);
     console.log("tokenke: ", token);
 
@@ -15,6 +15,7 @@ export const addHelpRequest = async (species, city, description) => {
             species: species,
             city: city,
             description: description,
+            image: image,
           }, {
             headers: {
               'Authorization': `Bearer ${token}`

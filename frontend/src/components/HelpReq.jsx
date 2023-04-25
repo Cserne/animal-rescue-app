@@ -57,6 +57,7 @@ const HelpReq = ({helpreq, d}) => {
           <div key={helpreq._id}><span>City: </span>{helpreq.city}</div>
           <div key={helpreq._id}><span>Date: </span>{new Date(helpreq.createdAt).toLocaleDateString()}</div>
           <div key={helpreq._id}><span>Details: </span>{helpreq.description}</div>
+          <img key={helpreq._id} src={helpreq.image} alt='img'></img>
           {
               <>
               <form className="sendHelp" onSubmit={handleSubmit}>
