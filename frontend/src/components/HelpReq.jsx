@@ -49,39 +49,33 @@ const HelpReq = ({helpreq, d}) => {
     };
 
   return (
-    <div className='helpReq'>
+    <div key={helpreq._id} className='helpReq'>
       <div className='showAllHelpReq'>
-        <div>
+        <div className='allHelpReq1'>
           <div key={helpreq._id}><span>User: </span>{d.username} ({d.email})</div>
           <div key={helpreq._id}><span>Species: </span>{helpreq.species}</div>
           <div key={helpreq._id}><span>City: </span>{helpreq.city}</div>
           <div key={helpreq._id}><span>Date: </span>{new Date(helpreq.createdAt).toLocaleDateString()}</div>
           <div key={helpreq._id}><span>Details: </span>{helpreq.description}</div>
           <img key={helpreq._id} src={helpreq.image} alt='img'></img>
-          {
-              <>
-              <form className="sendHelp" onSubmit={handleSubmit}>
-              <label>
-                Send help down below!
-              </label>
-              <div className="input-div">
-                <input
-                  type="textarea"
-                  name="help"
-                  placeholder="I want to help"
-                  value={description}
-                  onChange={(e) => setDescription(e.target.value)}
-                  required
-                />
-              </div>
-      
-              <input type="submit" value="Send" />
-            </form>
-
-              </> 
-          }
         </div>
-        <div>
+        <div className='allHelpReq2'>
+          <form className="sendHelp" onSubmit={handleSubmit}>
+            {/* <label>
+              Send help down below!
+            </label> */}
+            <div className="input-div">
+              <input
+                type="textarea"
+                name="help"
+                placeholder="I want to help"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                required
+              />
+            </div>
+            <input type="submit" value="Send" />
+          </form>
           <div key={helpreq._id}><span>Helps: </span>{helpreq.helps.map((help) => (
               <div className='hh'>
                   <div key={help._id}>{help.description}</div>
@@ -89,7 +83,6 @@ const HelpReq = ({helpreq, d}) => {
               </div>
           ))}</div>
         </div>
-
       </div>
     </div>
   )

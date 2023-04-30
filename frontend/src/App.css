@@ -43,15 +43,8 @@ button, input, textarea {
 }
 
 .showAllData {
-  margin-bottom: 60px;
-}
-
-.showAllData {
   margin-top: 40px;
-}
-
-.usersHelpRequests{
-  margin-bottom: 20px;
+  margin-bottom: 60px;
 }
 
 .helpsPage {
@@ -147,7 +140,7 @@ a, button {
 }
 
 .myPageDeleteHelpReq button {
-  margin-top: 5px;
+  margin-top: 15px;
   border: 1px solid #000;
   border-top-left-radius: 37px 140px;
   border-top-right-radius: 23px 133px;
@@ -255,13 +248,21 @@ a, button {
   justify-content: space-evenly;
 }
 
-.showAllHelpReq div:first-child {
-  width: 80%;
+.allHelpReq1 {
+  width: 400px;
+  padding: 10px;
 }
 
-/* .showAllHelpReq div:nth-child(2) {
-  width: 85%;
-} */
+.allHelpReq1 div:nth-child(5) {
+  max-width: 250px;
+  word-wrap: break-word;
+  border: 2px solid red;
+}
+
+.allHelpReq2 {
+  /* width: 400px; */
+  padding: 10px;
+}
 
 .searchDetails {
   /* margin-left: 50px; */
@@ -300,6 +301,13 @@ a, button {
 
 .helpsOnPage {
   margin-top: 100px;
+}
+
+.sendHelp input[type="submit"] {
+  margin-bottom: 20px;
+  width: 50%;
+  background-color: #a87144;
+  color: #fff;
 }
 
 .sendHelp input[type="submit"]:hover {
@@ -419,8 +427,35 @@ a, button {
   margin-bottom: 15px;
 }
 
-.helpReq span, .help span, .searchDetails span, .myPageHelpReq span, .myPageHelpDesc span {
+.myPageMain {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.myPageHelpDesc {
+  min-width: 200px;
+}
+
+.helpReq span, .help span, .searchDetails span, .myPageHelpReq span, .myHelpsTitle {
   font-weight: 500;
+}
+
+.myHelpsTitle  {
+  margin-bottom: 20px;
+}
+
+.allMyHelps, .hh {
+  padding: 10px;
+  border: 2px solid #d6a3a3;
+  border-radius: 10px;
+}
+
+.update {
+  margin-bottom: 20px;
+}
+
+hr {
+  border-top: 2px dotted #d6a3a3;
 }
 
 .loginInputDiv, .regInputDiv, .myPageInputDiv {
@@ -461,11 +496,6 @@ a, button {
   text-align: center;
 }
 
-.sendHelp input[type="submit"] {
-  width: 50%;
-  background-color: #a87144;
-  color: #fff;
-}
 
 .hello {
   position: absolute;
@@ -507,6 +537,7 @@ a, button {
 .helpForm input[type="submit"] {
   width: 80%;
   margin: auto;
+  margin-top: 10px;
 }
 
 .helpForm input[type="submit"]:hover {
@@ -516,6 +547,7 @@ a, button {
 
 .usersHelpRequests {
   width: 100%;
+  margin-bottom: 20px;
   /* border: 1px solid red; */
 }
 
@@ -535,7 +567,30 @@ a, button {
 }
 
 img {
-  min-width: 250px;
-  width: 30%;
+  width: 250px;
   border-radius: 5px;
+}
+
+@media screen and (max-width: 670px) {
+  .myPageMain, .showAllHelpReq {
+    flex-direction: column;
+  }
+
+  .helpForm {
+    width: 80vw;
+  }
+
+  .allHelpReq1, .allHelpReq2, .myPageHelpDesc {
+    width: 40vw;
+  }
+}
+
+@media screen and (max-width: 390px) {
+  img, .input-div input {
+    width: 60vw;
+  }
+
+  .sendHelp input[type="submit"] {
+    width: 80px;
+  }
 }

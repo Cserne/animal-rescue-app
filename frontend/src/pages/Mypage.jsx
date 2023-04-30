@@ -151,12 +151,12 @@ const Mypage = () => {
                 required
               />
             </div>
-            {/* <input type='file' onChange={(e) => setImage(URL.createObjectURL(e.target.files[0]))}/> */}
-            <FileBase64
-            type="file"
-            multiple={false}
-            onDone={({ base64 }) => setImage(base64)}
-            />
+            <div className='upLoad'></div>
+              <FileBase64
+              type="file"
+              multiple={false}
+              onDone={({ base64 }) => setImage(base64)}
+              />
             <input type="submit" value="Submit" />
           </form>
         </div>
@@ -168,26 +168,29 @@ const Mypage = () => {
         data && 
           <div className='showMyHelpRequests'>
             {data.helpRequests.map((help) => (
-              <div className='myHelps'>
+              <div key={help._id} className='myHelps'>
                 {/* <div key={help._id}>HelpId: {help._id}</div> */}
-                <div className='myPageHelpReq'>
-                  <div key={help._id}><span>Username: </span>{data.username}</div>
-                  <div key={help._id}><span>Species: </span>{help.species}</div>
-                  <div key={help._id}><span>City: </span>{help.city}</div>
-                  {/* <div key={help._id}>Date: {help.date}</div> */}
-                  <div key={help._id}><span>Date: </span>{new Date(help.createdAt).toLocaleDateString()}</div>
-                  <div key={help._id}><span>Description: </span>{help.description}</div>
-                  <img key={help._id} src={help.image} alt='img'></img>
-                </div>
-                <div className='myPageHelpDesc'>
-                  <div key={help._id}><span>Helps: </span>{help.helps.map((h) => (
-                    <div>
-                      <UpdateHelp h={h} help={help}/>
-                    </div>
-                  ))}
+                <div className='myPageMain'>
+                  <div className='myPageHelpReq'>
+                    <div key={help._id}><span>Username: </span>{data.username}</div>
+                    <div key={help._id}><span>Species: </span>{help.species}</div>
+                    <div key={help._id}><span>City: </span>{help.city}</div>
+                    {/* <div key={help._id}>Date: {help.date}</div> */}
+                    <div key={help._id}><span>Date: </span>{new Date(help.createdAt).toLocaleDateString()}</div>
+                    <div key={help._id}><span>Description: </span>{help.description}</div>
+                    <img key={help._id} src={help.image} alt='img'></img>
                   </div>
-                  <DeleteHelpRequest help={help}/>
+                  <div className='myPageHelpDesc'>
+                    <div className='myHelpsTitle'>Helps</div>
+                    <div className='allMyHelps' key={help._id}>{help.helps.map((h) => (
+                      <div className='update'>
+                        <UpdateHelp h={h} help={help}/>
+                      </div>
+                    ))}
+                    </div>
+                  </div>
                 </div>
+                <DeleteHelpRequest help={help}/>
               </div>
 
             ))}
