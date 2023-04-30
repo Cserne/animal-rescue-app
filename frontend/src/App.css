@@ -329,6 +329,10 @@ a, button {
   box-shadow: 1px 1px 8px 2px #000000;
 }
 
+.helpReq {
+  position: relative;
+}
+
 .myHelps {
   text-align: left;
 }
@@ -565,9 +569,22 @@ hr {
   color: #61dafb;
 }
 
+.imgDiv {
+  min-height: 200px;
+}
+
 img {
   width: 250px;
   border-radius: 5px;
+}
+
+.clicked {
+  position: absolute;
+  top: 0;
+  left: 50;
+  width: 60vw;
+  margin: 0 auto;
+  z-index: 1;
 }
 
 @media screen and (max-width: 670px) {

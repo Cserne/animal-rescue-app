@@ -4,6 +4,7 @@ import jwt_decode from 'jwt-decode';
 
 const HelpReq = ({helpreq, d}) => {
     const [description, setDescription] = useState("");
+    const [imgClicked, setImgClicked] = useState(false);
     // const [sameUser, setSameUSer] = useState(false);
 
     const sendHelp = async (description) => {
@@ -48,6 +49,10 @@ const HelpReq = ({helpreq, d}) => {
         refreshPage();
     };
 
+    const handleImgClick = () => {
+      setImgClicked(!imgClicked)
+    }
+
   return (
     <div key={helpreq._id} className='helpReq'>
       <div className='showAllHelpReq'>
@@ -57,7 +62,9 @@ const HelpReq = ({helpreq, d}) => {
           <div key={helpreq._id}><span>City: </span>{helpreq.city}</div>
           <div key={helpreq._id}><span>Date: </span>{new Date(helpreq.createdAt).toLocaleDateString()}</div>
           <div key={helpreq._id}><span>Details: </span>{helpreq.description}</div>
-          <img key={helpreq._id} src={helpreq.image} alt='img'></img>
+          <div className='imgDiv'>
+            <img key={helpreq._id} src={helpreq.image} alt='img' className={ imgClicked ? 'clicked' : null} onClick={handleImgClick}></img>
+          </div>
         </div>
         <div className='allHelpReq2'>
           <form className="sendHelp" onSubmit={handleSubmit}>
