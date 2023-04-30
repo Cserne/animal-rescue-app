@@ -4,7 +4,7 @@ import jwt_decode from 'jwt-decode';
 
 const HelpReq = ({helpreq, d}) => {
     const [description, setDescription] = useState("");
-    const [sameUser, setSameUSer] = useState(false);
+    // const [sameUser, setSameUSer] = useState(false);
 
     const sendHelp = async (description) => {
         const token = (JSON.parse(localStorage.getItem('token')).token);
